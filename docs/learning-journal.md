@@ -253,4 +253,138 @@ Understand the purpose of a Product Requirements Document (PRD) and how software
 
 ## Status
 
-Sprint 0 – Day 2 In Progress ✅
+Sprint 0 – Day 2 Completed✅
+
+---
+
+# Day 3 - Writing the Product Requirements Document (PRD)
+
+**Date:** 19 July 2026
+
+## Objective
+
+Create the first version of the Product Requirements Document (PRD) for the EventHub project and understand how software products are planned before development begins.
+
+---
+
+## What I Learned
+
+### Product Requirements Document (PRD)
+
+- A PRD defines **what** the product should do and **why** it should exist.
+- It does not describe implementation details such as programming languages, databases, or frameworks.
+- A PRD acts as the foundation for architecture, development, testing, and deployment planning.
+
+---
+
+### Structure of a Professional PRD
+
+Learned the purpose of the following sections:
+
+- Document Information
+- Product Overview
+- Business Problem
+- Vision Statement
+- Objectives
+- Target Users
+- Scope
+- Functional Features
+- Non-Functional Expectations
+- Out of Scope
+- Assumptions
+- Constraints
+- Success Metrics
+- Future Enhancements
+- Version History
+
+---
+
+### Product Thinking
+
+Understood how to define:
+
+- The business problem
+- Product vision
+- Primary objectives
+- User roles
+- MVP scope
+- Features intentionally excluded from Version 1.0
+
+---
+
+### EventHub Product Vision
+
+Defined EventHub as an:
+
+> Enterprise-grade Cloud-Native Event Management Platform
+
+Designed for:
+
+- Customers
+- Organizers
+- Administrators
+
+---
+
+### MVP Features
+
+Finalized Version 1.0 features:
+
+- User Registration
+- Login
+- JWT Authentication
+- Event Management
+- Event Search
+- Ticket Booking
+- Booking History
+- Notifications
+- Basic Administration
+- Basic Analytics
+
+---
+
+### Software Engineering Concepts
+
+Learned the difference between:
+
+- PRD (What & Why)
+- FRD (How the business functionality behaves)
+- HLD (Overall Architecture)
+- LLD (Detailed Technical Design)
+
+---
+
+## Challenges Faced
+
+- Understanding the difference between business requirements and technical implementation.
+- Learning to keep implementation details out of the PRD.
+
+---
+
+## Key Takeaways
+
+- Every successful software product starts with understanding the business problem.
+- Good documentation reduces confusion during development.
+- Defining project scope early helps prevent scope creep.
+- A clear PRD makes architecture and implementation easier.
+
+---
+
+## Questions for Tomorrow
+
+- What is an FRD?
+- How is an FRD different from a PRD?
+- How are business requirements converted into functional requirements?
+- How do we prepare the project for architecture design?
+
+---
+
+## Time Spent
+
+Approximately 2–3 hours
+
+---
+
+## Status
+
+Sprint 0 – Day 3 Completed ✅
