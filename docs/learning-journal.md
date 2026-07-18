@@ -388,3 +388,244 @@ Approximately 2–3 hours
 ## Status
 
 Sprint 0 – Day 3 Completed ✅
+
+---
+
+# Sprint 0 – Day 4
+## Topic: Functional Requirements Document (FRD)
+
+**Date:** 19 July 2026
+
+---
+
+# Objective
+
+Understand the purpose of a Functional Requirements Document (FRD) and learn how business requirements are converted into detailed functional specifications before software development begins.
+
+---
+
+# Theory Learned
+
+Today I learned that a Functional Requirements Document (FRD) defines how a software system should behave from the business and user perspective.
+
+Unlike the Product Requirements Document (PRD), which explains what the product is and why it is needed, the FRD focuses on the detailed functionality of the application.
+
+The FRD acts as a bridge between business requirements and software design. It provides developers, testers, architects, and business analysts with a common understanding of how the application should function.
+
+---
+
+# Why an FRD is Important
+
+An FRD helps ensure that everyone involved in the project understands the expected behavior of the system before implementation begins.
+
+Benefits include:
+
+- Eliminates ambiguity in requirements
+- Defines expected system behavior
+- Helps developers understand business expectations
+- Provides a reference for QA and testing
+- Reduces misunderstandings during development
+- Improves communication between business and technical teams
+
+---
+
+# Practical Work Completed
+
+Completed the Version 1.0 Functional Requirements Document (FRD) for the EventHub project.
+
+The document includes:
+
+- Purpose
+- Functional Overview
+- User Roles
+- Functional Requirements
+- Business Rules
+- Validation Rules
+- Error Handling
+- Functional Flow
+- Assumptions
+- Out of Scope
+- Future Enhancements
+- Version History
+
+Saved the document as:
+
+```
+docs/frd.md
+```
+
+Committed and pushed the document to the GitHub repository.
+
+---
+
+# Functional Modules Identified
+
+The EventHub application consists of the following major functional modules:
+
+- User Registration
+- User Authentication
+- User Profile
+- Event Management
+- Event Search
+- Ticket Booking
+- Booking Management
+- Administrator Module
+
+Each module has clearly defined responsibilities and expected behavior.
+
+---
+
+# Business Rules Learned
+
+Examples of business rules documented today include:
+
+- Email address must be unique.
+- Passwords must be encrypted.
+- Event dates cannot be in the past.
+- Booking is allowed only if seats are available.
+- Duplicate bookings are not permitted.
+- Organizers can manage only their own events.
+
+Business rules define the constraints that the application must always follow.
+
+---
+
+# Validation Rules Learned
+
+Validation ensures that user input is correct before processing.
+
+Examples include:
+
+- Mandatory fields for registration.
+- Mandatory fields for event creation.
+- Capacity must be greater than zero.
+- Event title cannot be empty.
+- Valid email format is required.
+
+---
+
+# Error Handling
+
+Instead of returning generic errors, the system should provide meaningful business messages.
+
+Examples:
+
+- Email already registered
+- Invalid email or password
+- Event not found
+- Event is full
+- Authentication required
+- Access denied
+
+These messages improve user experience and simplify troubleshooting.
+
+---
+
+# New Concepts Learned
+
+- Functional Requirements
+- Business Rules
+- Validation Rules
+- Functional Modules
+- User Roles
+- Functional Flow
+- Error Handling
+- Requirement Traceability
+
+---
+
+# Difference Between PRD and FRD
+
+| PRD | FRD |
+|------|------|
+| Defines what should be built | Defines how the system should behave |
+| Focuses on business goals | Focuses on functional behavior |
+| Product-oriented | User and system-oriented |
+| Created before FRD | Created after PRD |
+
+---
+
+# Git Activity
+
+Updated project documentation.
+
+Typical Git workflow:
+
+```bash
+git status
+git add .
+git commit -m "docs: add functional requirements document"
+git push
+```
+
+---
+
+# Interview Questions
+
+### Q1. What is a Functional Requirements Document (FRD)?
+
+A Functional Requirements Document defines the expected behavior of a software application from the user's and business perspective. It describes features, workflows, validations, business rules, and functional requirements without specifying technical implementation.
+
+---
+
+### Q2. What is the difference between PRD and FRD?
+
+PRD explains what the product is and why it should be built.
+
+FRD explains how the system should behave to satisfy those business requirements.
+
+---
+
+### Q3. Who prepares an FRD?
+
+Typically, a Business Analyst or Product Analyst prepares the FRD with input from Product Managers and stakeholders.
+
+---
+
+### Q4. Who uses the FRD?
+
+- Software Developers
+- QA Engineers
+- Solution Architects
+- Product Owners
+- Business Analysts
+
+---
+
+# Challenges Faced
+
+Understanding the difference between business requirements and technical implementation.
+
+Initially, it was tempting to think about Spring Boot classes and APIs while writing the FRD, but I learned that an FRD should remain technology-independent and focus only on system functionality.
+
+---
+
+# Key Takeaways
+
+- Requirements should always be documented before coding.
+- The FRD describes system behavior, not implementation.
+- Business rules are different from technical implementation.
+- Validation rules improve data quality.
+- Error handling should provide meaningful messages.
+- Good documentation reduces development risk and improves communication across teams.
+
+---
+
+# Next Day Goal
+
+Learn High-Level Design (HLD) and understand how enterprise applications are architected before implementation begins.
+
+Topics to cover:
+
+- System Architecture
+- Microservices
+- Component Diagram
+- Technology Stack
+- High-Level Data Flow
+- Integration Overview
+
+---
+
+# Status
+
+✅ Sprint 0 – Day 4 Completed
