@@ -629,3 +629,372 @@ Topics to cover:
 # Status
 
 ✅ Sprint 0 – Day 4 Completed
+
+---
+
+# Date: 2026-07-19
+
+## Sprint
+
+Sprint 0 – Repository Foundation & Architecture Preparation
+
+---
+
+# Session Objectives
+
+Today's objective was to finalize the EventHub repository structure and establish the engineering foundation before beginning architecture documentation and implementation.
+
+Instead of rushing into coding, the focus was on making architectural decisions that would influence the project throughout its lifecycle.
+
+---
+
+# Work Completed
+
+## Repository Structure
+
+Finalized and locked Repository Structure Version 1.0.
+
+```
+EventHub/
+│
+├── .github/
+│
+├── services/
+│
+├── docs/
+│   ├── architecture/
+│   │   ├── adr/
+│   │   └── diagrams/
+│   ├── api/
+│   ├── database/
+│   ├── operations/
+│   ├── prd.md
+│   ├── frd.md
+│   └── learning-journal.md
+│
+├── infrastructure/
+│   ├── docker/
+│   └── kubernetes/
+│
+├── scripts/
+│
+├── README.md
+├── CHANGELOG.md
+└── ENGINEERING-PORTFOLIO.md
+```
+
+Repository structure has now been frozen before implementation begins.
+
+---
+
+# Major Engineering Discussions
+
+## 1. Monorepo vs Multi-repo
+
+One of today's most important discussions was selecting the repository strategy.
+
+### Monorepo
+
+Advantages
+
+- Easier project setup
+- Single Git repository
+- Easier local development
+- Easier architectural consistency
+- Shared CI/CD pipeline if desired
+- Better suited for learning and portfolio projects
+
+Disadvantages
+
+- Larger repository size over time
+- Requires discipline to maintain service independence
+
+### Multi-repo
+
+Advantages
+
+- Complete service independence
+- Independent release cycles
+- Smaller repositories
+
+Disadvantages
+
+- Harder local development
+- More repositories to manage
+- More complicated onboarding
+- More CI/CD pipelines
+
+### Final Decision
+
+EventHub will use a **Monorepo**.
+
+Reason:
+
+Although services will be independently deployable, keeping them in one repository makes the project easier to learn, maintain, review, and present as a portfolio while still following microservice principles.
+
+---
+
+## 2. Independent Microservices
+
+Discussed whether services should share code.
+
+Conclusion:
+
+Every microservice should own:
+
+- Business Logic
+- Database
+- Dependencies
+- Build
+- Deployment
+- Release Lifecycle
+
+Each service should remain independently deployable.
+
+---
+
+## 3. Shared Libraries
+
+Initially discussed creating a shared module.
+
+After evaluating modern microservice practices, this idea was rejected.
+
+Reason:
+
+Sharing business code creates tight compile-time coupling between services.
+
+Future changes in one service can unintentionally affect others.
+
+Instead:
+
+Business logic will remain inside each service.
+
+Only engineering standards may be shared through documentation rather than shared code.
+
+---
+
+## 4. Parent POM
+
+Discussed using a common Maven Parent POM.
+
+Advantages considered:
+
+- Common dependency versions
+- Plugin management
+- Centralized build configuration
+
+Disadvantages:
+
+- Tight build coupling
+- Every service depends on a common parent
+- Reduced service autonomy
+
+Decision:
+
+Each microservice will maintain its own `pom.xml`.
+
+Dependency versions will be updated independently when required.
+
+This aligns with modern cloud-native microservice practices.
+
+---
+
+## 5. Repository Organization
+
+Several repository layouts were evaluated.
+
+Rejected
+
+```
+backend/
+```
+
+Reason:
+
+EventHub contains multiple backend applications rather than one backend.
+
+Chosen
+
+```
+services/
+```
+
+Reason:
+
+Each directory inside `services` represents an independent deployable microservice.
+
+---
+
+Rejected
+
+```
+architecture/
+```
+
+at repository root.
+
+Chosen
+
+```
+docs/architecture/
+```
+
+Reason:
+
+Architecture is documentation rather than executable code.
+
+---
+
+Rejected
+
+```
+openapi/
+```
+
+at repository root.
+
+Chosen
+
+```
+docs/api/
+```
+
+Reason:
+
+OpenAPI specifications are documentation.
+
+---
+
+Rejected
+
+```
+monitoring/
+```
+
+at repository root.
+
+Reason:
+
+Monitoring infrastructure has not yet been implemented.
+
+Future monitoring resources will be added when observability is implemented.
+
+---
+
+# Repository Decisions
+
+The following repository principles were finalized.
+
+- Documentation belongs under `docs`.
+- Source code belongs under `services`.
+- Infrastructure belongs under `infrastructure`.
+- Automation belongs under `scripts`.
+- Documentation should be grouped by concern rather than technology.
+- Architecture diagrams belong inside `docs/architecture/diagrams`.
+
+Repository Structure Version 1.0 is now locked.
+
+---
+
+# Git Learnings
+
+Today's Git learning included understanding that Git does not track empty directories.
+
+Solutions:
+
+- `.gitkeep`
+- `README.md`
+
+Used `.gitkeep` temporarily until real project files are added.
+
+---
+
+# Software Engineering Learnings
+
+Today's session reinforced several software engineering principles.
+
+- Architecture should be planned before implementation.
+- Repository organization affects maintainability.
+- Documentation is part of engineering, not an afterthought.
+- Good folder structures reduce future technical debt.
+- Microservices should be independent, not merely separated into folders.
+- Build independence is as important as runtime independence.
+- Architectural decisions should be documented rather than remembered.
+
+---
+
+# Challenges Faced
+
+Several design questions required discussion before implementation.
+
+- Should the project use Monorepo or Multi-repo?
+- Should services share code?
+- Should a common Parent POM be used?
+- Should there be a backend folder?
+- Where should architecture documentation live?
+- Where should OpenAPI specifications live?
+- Should monitoring exist before implementation?
+- How should diagrams be organized?
+
+These discussions helped establish a clean architectural foundation before any code is written.
+
+---
+
+# Outcome
+
+Today's work completed the repository foundation phase.
+
+The project now has:
+
+- Professional repository organization
+- Clear documentation strategy
+- Defined engineering boundaries
+- Independent service philosophy
+- Locked repository structure
+- Architecture-first development approach
+
+---
+
+# Next Steps
+
+Sprint 1 – Architecture Documentation
+
+Planned documents
+
+1. docs/architecture/README.md
+2. system-overview.md
+3. technology-stack.md
+4. service-boundaries.md
+5. communication-patterns.md
+6. deployment-architecture.md
+7. security-architecture.md
+8. observability.md
+9. architecture-principles.md
+
+After architecture documentation
+
+- Architecture Decision Records (ADRs)
+- High-Level Design (HLD)
+- Low-Level Design (LLD)
+- Database Design
+- OpenAPI Specifications
+
+Finally
+
+Implementation of the first Spring Boot microservice.
+
+---
+
+# Personal Reflection
+
+Although no Java code was written today, one of the most important milestones of the project was achieved.
+
+Today's work established the engineering foundation that will guide every future implementation.
+
+A well-designed repository, clear architectural boundaries, and documented engineering decisions are just as important as writing clean code.
+
+This session reinforced an important lesson:
+
+**Good software architecture begins long before the first line of code is written.**
+
+✅ Sprint 0 – Day 5 Completed
