@@ -636,8 +636,7 @@ Topics to cover:
 
 ## Sprint
 
-Sprint 0 – Repository Foundation & Architecture Preparation
-
+Sprint 1 – Architecture & Design
 ---
 
 # Session Objectives
