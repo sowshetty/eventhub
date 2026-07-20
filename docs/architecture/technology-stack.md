@@ -141,8 +141,6 @@ Java 21 is used in all backend services:
 
 ## Spring Boot 3.x
 
-## Spring Boot 3.x
-
 ### Purpose
 
 Spring Boot is the primary application framework used to build all EventHub microservices. It simplifies application development by providing auto-configuration, embedded servers, and production-ready features.
@@ -204,8 +202,6 @@ Spring Boot is used in all backend services:
 
 ## Spring Cloud Gateway
 
-## Spring Cloud Gateway
-
 ### Purpose
 
 Spring Cloud Gateway serves as the single entry point for all client requests, handling routing, security, and other cross-cutting concerns.
@@ -254,8 +250,6 @@ Used as the API Gateway for all incoming requests before they reach the backend 
 - Gateway failures can affect all services if high availability is not configured
 
 ---
-
-## Spring Security + JWT
 
 ## Spring Security + JWT
 
@@ -317,8 +311,6 @@ Used by:
 
 ## PostgreSQL
 
-## PostgreSQL
-
 ### Purpose
 
 PostgreSQL is the primary relational database for storing transactional and structured data in EventHub.
@@ -373,8 +365,6 @@ Stores structured business data such as:
 - Horizontal scaling is more complex than some NoSQL solutions
 
 ---
-
-## MongoDB
 
 ## MongoDB
 
@@ -434,8 +424,6 @@ Stores:
 
 ## Elasticsearch
 
-## Elasticsearch
-
 ### Purpose
 
 Elasticsearch provides fast and powerful search capabilities across event data.
@@ -488,8 +476,6 @@ Searches:
 - Data synchronization with source databases is required
 
 ---
-
-## Redis
 
 ## Redis
 
@@ -566,8 +552,6 @@ This approach improves scalability, performance, and maintainability by allowing
 
 ## Apache Kafka
 
-## Apache Kafka
-
 ### Purpose
 
 Apache Kafka is the event streaming platform used for asynchronous communication between EventHub microservices.
@@ -626,8 +610,6 @@ Kafka is used for asynchronous events such as:
 
 ## OpenAPI 3
 
-## OpenAPI 3
-
 ### Purpose
 
 OpenAPI defines a standard specification for documenting REST APIs, making them easy to understand and consume.
@@ -672,8 +654,6 @@ Documents all REST APIs exposed by EventHub services.
 - Requires documentation updates as APIs evolve
 
 ---
-
-## Swagger UI
 
 ## Swagger UI
 
@@ -723,8 +703,6 @@ Available for all REST services during development and testing.
 ---
 
 # Infrastructure
-
-## Docker
 
 ## Docker
 
@@ -785,8 +763,6 @@ Docker is used to containerize:
 - Inefficient Dockerfiles can increase image size
 
 ---
-
-## Kubernetes
 
 ## Kubernetes
 
@@ -853,8 +829,6 @@ Kubernetes manages:
 
 ## Micrometer
 
-## Micrometer
-
 ### Purpose
 
 Micrometer collects application metrics and provides a common interface for monitoring Spring Boot applications.
@@ -905,8 +879,6 @@ Collects metrics such as:
 - Requires a monitoring backend such as Prometheus
 
 ---
-
-## Prometheus
 
 ## Prometheus
 
@@ -962,8 +934,6 @@ Stores metrics from:
 
 ## Grafana
 
-## Grafana
-
 ### Purpose
 
 Grafana visualizes metrics collected by Prometheus through interactive dashboards.
@@ -1013,8 +983,6 @@ Displays dashboards for:
 - Requires dashboard maintenance as the system evolves
 
 ---
-
-## OpenTelemetry
 
 ## OpenTelemetry
 
@@ -1075,8 +1043,6 @@ Captures traces across:
 
 ## Maven
 
-## Maven
-
 ### Purpose
 
 Maven is the build automation and dependency management tool used for all EventHub services.
@@ -1128,8 +1094,6 @@ Used to:
 - Less flexible than Gradle for complex builds
 
 ---
-
-## GitHub Actions
 
 ## GitHub Actions
 
