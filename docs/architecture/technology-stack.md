@@ -30,6 +30,8 @@ This document serves as the authoritative reference for technology decisions thr
 
 # Technology Selection Principles
 
+The technology decisions documented here align with the architectural principles defined in `architecture-principles.md`. Every technology selection should support the project's goals of scalability, maintainability, security, observability, and cloud-native deployment.
+
 EventHub follows a technology selection process based on engineering requirements rather than popularity or trends.
 
 Each technology is evaluated using the following principles.
@@ -73,8 +75,6 @@ EventHub is intended not only as a functional application but also as a demonstr
 ---
 
 # Backend Technologies
-
-## Java 21
 
 ## Java 21
 
@@ -546,6 +546,8 @@ Caches:
 ---
 
 ## Polyglot Persistence Strategy
+
+Each service owns its data and selects the most appropriate storage technology based on functional and non-functional requirements. This approach avoids forcing every workload into a single database technology.
 
 EventHub uses a polyglot persistence approach, selecting the most appropriate data store for each use case rather than relying on a single database.
 
@@ -1259,6 +1261,12 @@ The selected technologies emphasize:
 - Developer productivity
 
 Each technology has been chosen based on its suitability for the platform rather than popularity alone, ensuring a balanced and sustainable architecture.
+
+---
+
+## Decision Summary
+
+The EventHub technology stack has been selected to support a scalable, secure, cloud-native microservices architecture. The combination of relational, document, search, messaging, and observability technologies enables each component to perform the role it is best suited for while maintaining a consistent development experience across the platform.
 
 ---
 
