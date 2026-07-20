@@ -51,6 +51,23 @@ The architecture has been designed to achieve the following goals:
 
 ---
 
+# Architecture Characteristics
+
+EventHub has been designed with the following quality attributes:
+
+- Scalability
+- High Availability
+- Maintainability
+- Extensibility
+- Performance
+- Reliability
+- Security
+- Observability
+- Fault Tolerance
+- Testability
+
+---
+
 # Architectural Style
 
 EventHub follows a **Microservices Architecture**.
@@ -175,6 +192,20 @@ Responsibilities:
 Primary Database:
 
 - PostgreSQL
+
+---
+
+## Future Services
+
+The following services are planned for future releases as the platform evolves:
+
+- Payment Service
+- Search Service (Dedicated)
+- Recommendation Service
+- Analytics Service
+- Media Service
+
+These services are intentionally excluded from Version 1.0 to keep the initial implementation focused while ensuring the architecture can evolve without major redesign.
 
 ---
 
@@ -459,6 +490,21 @@ The EventHub architecture follows these principles:
 - Infrastructure as Code
 - Twelve-Factor App
 - Independent Deployability
+
+---
+
+# Out of Scope
+
+This document intentionally does not cover:
+
+- Package structure
+- Class-level design
+- REST API endpoint definitions
+- Database schema design
+- Kubernetes manifests
+- CI/CD pipeline implementation
+
+These topics are documented separately in their respective architecture and design documents.
 
 ---
 
