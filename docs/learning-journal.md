@@ -634,7 +634,7 @@ Topics to cover:
 
 # Date: 2026-07-19
 
-## Sprint
+## Sprint 1
 
 Sprint 1 – Architecture & Design
 ---
@@ -997,3 +997,99 @@ This session reinforced an important lesson:
 **Good software architecture begins long before the first line of code is written.**
 
 ✅ Sprint 0 – Day 5 Completed
+
+---
+
+**Date:** 2026-07-20
+
+**Sprint:** Sprint 1 – Architecture & Design
+
+---
+
+## Objective
+
+Complete the `technology-stack.md` architecture document by documenting the technologies used in EventHub and the rationale behind each technology selection.
+
+---
+
+## Work Completed
+
+Completed the following sections in `technology-stack.md`:
+
+- Purpose
+- Technology Selection Principles
+- Backend Technologies
+  - Java 21
+  - Spring Boot 3.x
+  - Spring Cloud Gateway
+  - Spring Security + JWT
+- Data Layer
+  - PostgreSQL
+  - MongoDB
+  - Elasticsearch
+  - Redis
+  - Polyglot Persistence Strategy
+- Messaging
+  - Apache Kafka
+- API Documentation
+  - OpenAPI 3
+  - Swagger UI
+- Infrastructure
+  - Docker
+  - Kubernetes
+- Observability
+  - Micrometer
+  - Prometheus
+  - Grafana
+  - OpenTelemetry
+- Build & CI/CD
+  - Maven
+  - GitHub Actions
+- Technology Compatibility Matrix
+- Future Considerations
+- Related Documents
+
+---
+
+## Key Concepts Learned
+
+- Technology selection should be based on architectural requirements rather than popularity.
+- Polyglot Persistence enables different databases to handle workloads they are best suited for.
+- Each technology in a microservices architecture has a specific responsibility and should integrate well with the overall platform.
+- Architecture documentation should clearly explain the purpose, rationale, advantages, and trade-offs of each technology.
+
+---
+
+## Interview Notes
+
+Topics reinforced during today's work:
+
+- Why Java 21 and Spring Boot 3.x for enterprise applications?
+- What is Polyglot Persistence?
+- Why use PostgreSQL and MongoDB together?
+- Why use Elasticsearch instead of relying only on relational database search?
+- Why Redis for caching?
+- Why Kafka in a microservices architecture?
+- Difference between Docker and Kubernetes.
+- Role of Prometheus, Grafana, and OpenTelemetry in observability.
+
+---
+
+## Challenges Faced
+
+- Keeping the documentation concise while still explaining the reasoning behind each technology choice.
+- Maintaining a consistent structure across all technology sections.
+- Refining the document by removing duplicate headings and improving readability.
+
+---
+
+## Key Takeaway
+
+A technology stack is more than a list of tools. Each technology should be selected because it addresses a specific architectural need and works effectively with the rest of the system. Understanding these decisions is essential for designing and explaining enterprise applications.
+
+---
+
+## Next Steps
+
+Begin `service-boundaries.md` to define the responsibilities, ownership, and interactions of each microservice in EventHub.
+
