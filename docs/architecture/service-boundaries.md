@@ -440,7 +440,7 @@ This approach enables services to process events independently, improving scalab
 ## High-Level Communication Flow
 
 ```text
-                        Client
+ Client
     │
     ▼
 API Gateway
@@ -479,6 +479,21 @@ The service boundaries in EventHub are designed around the following principles:
 - Services can be developed, deployed, and scaled independently.
 - Event-driven communication is preferred for non-blocking workflows.
 - Infrastructure responsibilities remain separate from business responsibilities.
+
+---
+
+# Design Decisions
+
+The service boundaries in EventHub are defined based on business capabilities rather than technical layers.
+
+The following design decisions guide the architecture:
+
+- Each service owns a single business capability.
+- Each service owns and manages its own data.
+- Services communicate through REST APIs or asynchronous events instead of direct database access.
+- Business logic remains within the owning service.
+- Services are independently deployable and scalable.
+- Cross-service dependencies are minimized to improve maintainability and resilience.
 
 ---
 
