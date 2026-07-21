@@ -513,3 +513,22 @@ These topics are documented separately in their respective architecture document
 
 ---
 
+# Related Documents
+
+The following documents provide additional architectural context for the EventHub platform:
+
+- [System Overview](system-overview.md)
+- [Technology Stack](technology-stack.md)
+- [Communication Patterns](communication-patterns.md)
+- Deployment Architecture *(to be added)*
+- Security Architecture *(to be added)*
+- Observability *(to be added)*
+- Architecture Principles *(to be added)*
+
+---
+
+# Version History
+
+| Version | Date | Author | Description |
+|----------|------|--------|-------------|
+| 1.0 | 2026-07-21 | Naveen Krishna | Initial version of the Service Boundaries architecture document. |
