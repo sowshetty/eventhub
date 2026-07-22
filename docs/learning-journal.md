@@ -1093,3 +1093,95 @@ A technology stack is more than a list of tools. Each technology should be selec
 
 Begin `service-boundaries.md` to define the responsibilities, ownership, and interactions of each microservice in EventHub.
 
+---
+
+# Learning Journal
+
+**Date:** 22 July 2026
+
+**Sprint:** Sprint 1 – Architecture & Design
+
+## Objective
+
+Understand how to define service boundaries in a microservices architecture by identifying business capabilities, assigning responsibilities, establishing data ownership, and documenting service interactions.
+
+---
+
+## Work Completed
+
+Completed the `service-boundaries.md` architecture document for the EventHub project.
+
+The document includes:
+
+- Purpose of service boundaries
+- Service Boundary Principles
+- Infrastructure Services
+  - API Gateway
+- Business Services
+  - Authentication Service
+  - User Service
+  - Event Service
+  - Booking Service
+  - Notification Service
+- Service Responsibility Summary
+- Database Ownership
+- Service Communication Summary
+- High-Level Communication Flow
+- Guiding Principles
+- Design Decisions
+- Out of Scope
+- Related Documents
+- Version History
+
+---
+
+## Key Concepts Learned
+
+- A microservice should own a single business capability.
+- Every service should own and manage its own data.
+- Services must never directly access another service's database.
+- Communication between services should happen through REST APIs or asynchronous events.
+- Infrastructure components such as API Gateway should remain separate from business services.
+- Designing services around business domains improves scalability, maintainability, and independent deployment.
+
+---
+
+## Interview Notes
+
+Today I strengthened my understanding of several commonly asked system design concepts:
+
+- Defining service boundaries in a microservices architecture.
+- Separating Authentication and User services based on responsibility.
+- Understanding the Database per Service pattern.
+- Choosing synchronous REST communication versus asynchronous event-driven messaging.
+- Explaining why loose coupling and high cohesion are important in distributed systems.
+- Identifying when an API Gateway acts as infrastructure rather than a business service.
+
+These concepts are frequently discussed in backend engineering and system design interviews.
+
+---
+
+## Challenges
+
+- Determining the appropriate responsibility for each service without creating overlap.
+- Ensuring clear ownership of data while avoiding cross-service database access.
+- Organizing the document so it flows logically from principles to implementation details.
+
+---
+
+## Key Takeaway
+
+Effective service boundaries are based on business capabilities, not technical layers. Clear ownership of responsibilities and data leads to loosely coupled, independently deployable services that are easier to scale and maintain.
+
+---
+
+## Next Steps
+
+- Begin documenting `communication-patterns.md`.
+- Learn synchronous vs asynchronous communication in greater depth.
+- Explore event-driven architecture using Apache Kafka.
+- Study request-response patterns, event publishing, retries, idempotency, and fault tolerance in distributed systems.
+
+---
+
+
