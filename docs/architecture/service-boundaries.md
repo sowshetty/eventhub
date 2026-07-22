@@ -531,4 +531,4 @@ The following documents provide additional architectural context for the EventHu
 
 | Version | Date | Author | Description |
 |----------|------|--------|-------------|
-| 1.0 | 2026-07-21 | Naveen Krishna | Initial version of the Service Boundaries architecture document. |
+| 1.0 | 2026-07-21 | Sowmyaa Shetty | Initial version of the Service Boundaries architecture document. |
