@@ -1184,4 +1184,133 @@ Effective service boundaries are based on business capabilities, not technical l
 
 ---
 
+# Learning Journal
+
+**Date:** 22 July 2026
+
+**Sprint:** Sprint 1 – Architecture & Design
+
+## Objective
+
+Understand communication patterns in a microservices architecture, including synchronous and asynchronous communication, event-driven architecture, reliability, and request traceability.
+
+---
+
+## Work Completed
+
+Completed the `communication-patterns.md` architecture document for the EventHub project.
+
+The document includes:
+
+- Purpose
+- Communication Principles
+- Synchronous Communication
+- Asynchronous Communication
+- Communication Flow
+- Reliability Considerations
+- Correlation & Traceability
+- Design Decisions
+- Out of Scope
+- Related Documents
+- Version History
+
+---
+
+## Key Concepts Learned
+
+- Differences between synchronous and asynchronous communication.
+- Request-response communication using REST APIs.
+- Event-driven architecture using Apache Kafka.
+- Event publishing and event consumption.
+- Communication flow between microservices.
+- Reliability concepts such as idempotency, retries, timeouts, and Dead Letter Queues (DLQs).
+- Correlation IDs for request tracing.
+- Distributed tracing in microservices.
+
+---
+
+## Interview Questions & Short Answers
+
+### Why use REST instead of Kafka for user login?
+
+User login requires an immediate response. REST provides synchronous request-response communication, making it suitable for authentication workflows.
+
+---
+
+### Why use Kafka instead of REST for notifications?
+
+Notifications are background tasks that do not require an immediate response. Kafka enables asynchronous processing, improves scalability, and reduces coupling between services.
+
+---
+
+### What is Event-Driven Architecture?
+
+An architectural style where services communicate by publishing and consuming events instead of directly invoking one another.
+
+---
+
+### What is Idempotency?
+
+Idempotency ensures that processing the same request or event multiple times produces the same result without creating duplicate business operations.
+
+---
+
+### What is a Dead Letter Queue (DLQ)?
+
+A Dead Letter Queue stores messages that repeatedly fail processing after the configured retry attempts, allowing them to be inspected or replayed later.
+
+---
+
+### Why are Timeouts important?
+
+Timeouts prevent services from waiting indefinitely for responses, improving system responsiveness and preventing resource exhaustion.
+
+---
+
+### What is a Correlation ID?
+
+A Correlation ID is a unique identifier assigned to a request and propagated across services, enabling end-to-end request tracing and easier debugging.
+
+---
+
+### How do you trace a request across multiple microservices?
+
+Generate a Correlation ID at the API Gateway and propagate it through HTTP headers, Kafka event metadata, and logs across all services.
+
+---
+
+## Challenges
+
+- Understanding when to use synchronous versus asynchronous communication.
+- Learning how Kafka supports event-driven workflows.
+- Understanding reliability mechanisms such as retries, idempotency, and DLQs.
+- Understanding how distributed tracing works using Correlation IDs.
+
+---
+
+## Key Takeaway
+
+Choosing the right communication pattern is essential in microservices. REST is best for immediate request-response interactions, while Kafka enables scalable, resilient, and loosely coupled event-driven communication. Reliability and observability mechanisms ensure that distributed systems remain robust and maintainable.
+
+---
+
+## Next Steps
+
+- Begin documenting `deployment-architecture.md`.
+- Learn containerization using Docker.
+- Understand Kubernetes architecture and service deployment.
+- Explore service discovery, load balancing, and scaling strategies.
+
+---
+
+## Revision Notes
+
+- REST → Immediate response
+- Kafka → Background processing
+- Idempotency → No duplicate operations
+- DLQ → Failed messages after retries
+- Correlation ID → Trace requests across services
+
+---
+
 
