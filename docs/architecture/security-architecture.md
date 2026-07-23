@@ -254,12 +254,20 @@ Operational dashboards are provided through Prometheus, Grafana, and Loki.
 
 ## 13. References
 
-- System Overview
-- Technology Stack
-- Deployment Architecture
-- API Design Guidelines
-- Spring Security Documentation
-- OWASP Top 10
+### Internal Documents
+
+- [System Overview](system-overview.md)
+- [Technology Stack](technology-stack.md)
+- [Deployment Architecture](deployment-architecture.md)
+
+---
+
+### External References
+
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+- [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/)
+- [RFC 7519 - JSON Web Token (JWT)](https://www.rfc-editor.org/rfc/rfc7519)
+- [Spring Security Reference Documentation](https://docs.spring.io/spring-security/reference/)
 
 ---
 

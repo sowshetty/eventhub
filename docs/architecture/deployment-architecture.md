@@ -274,6 +274,26 @@ The deployment architecture follows these
 
 ---
 
+## References
+
+### Internal Documents
+
+- [System Overview](system-overview.md)
+- [Technology Stack](technology-stack.md)
+- [Communication Patterns](communication-patterns.md)
+
+---
+
+### External References
+
+- [Docker Documentation](https://docs.docker.com/)
+- [Kubernetes Documentation](https://kubernetes.io/docs/)
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- [Prometheus Documentation](https://prometheus.io/docs/)
+- [Grafana Documentation](https://grafana.com/docs/)
+
+---
+
 ## Version History
 
 | Version | Date | Author | Changes |

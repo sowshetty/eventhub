@@ -251,11 +251,23 @@ Recovery objectives and retention policies are defined as part of the operationa
 
 ## 14. References
 
-- System Overview
-- Technology Stack
-- Deployment Architecture
-- Security Architecture
-- API Design Guidelines
+### Internal Documents
+
+- [System Overview](system-overview.md)
+- [Technology Stack](technology-stack.md)
+- [Deployment Architecture](deployment-architecture.md)
+- [Security Architecture](security-architecture.md)
+- [API Design Guidelines](api-design-guidelines.md)
+
+---
+
+### External References
+
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+- [MongoDB Documentation](https://www.mongodb.com/docs/)
+- [Elasticsearch Documentation](https://www.elastic.co/guide/)
+- [Redis Documentation](https://redis.io/docs/)
+- [Flyway Documentation](https://documentation.red-gate.com/fd)
 
 ---
 
