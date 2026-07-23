@@ -1313,4 +1313,161 @@ Choosing the right communication pattern is essential in microservices. REST is 
 
 ---
 
+# Learning Journal
 
+---
+
+## Date
+
+23 July 2026
+
+## Sprint
+
+Sprint 1 – Architecture & Design
+
+## Topic
+
+Deployment Architecture
+
+## Objective
+
+Design a cloud-native deployment architecture for the EventHub platform that supports scalability, high availability, fault tolerance, automated deployments, and operational monitoring.
+
+---
+
+## Work Completed
+
+- Created the `deployment-architecture.md` document.
+- Defined the deployment environments:
+  - Local Development
+  - Development
+  - QA
+  - Staging
+  - Production
+- Designed the overall deployment architecture using Docker and Kubernetes.
+- Defined the containerization strategy for independent microservices.
+- Documented Kubernetes orchestration, networking, and deployment flow.
+- Finalized the infrastructure layer using:
+  - PostgreSQL
+  - MongoDB
+  - Redis
+  - Apache Kafka
+  - Elasticsearch
+- Documented configuration management using ConfigMaps, Secrets, and Environment Variables.
+- Defined scalability, high availability, monitoring, logging, and disaster recovery strategies.
+- Added the deployment pipeline using GitHub Actions and Kubernetes.
+- Standardized the document format by introducing a **Version History** table for all architecture documents.
+
+---
+
+## Key Concepts Learned
+
+### Multi-Environment Deployment
+
+Applications should move through Development, QA, Staging, and Production before reaching end users. Each environment serves a different purpose and reduces deployment risk.
+
+### Containerization
+
+Each microservice is packaged as an independent Docker image, ensuring consistency across developer machines and deployment environments.
+
+### Kubernetes
+
+Kubernetes automates container deployment, scaling, service discovery, rolling updates, and self-healing.
+
+### Polyglot Persistence
+
+Different data stores are selected based on business requirements rather than using a single database for every use case.
+
+- PostgreSQL for transactional data
+- MongoDB for flexible document storage
+- Redis for caching
+- Kafka for asynchronous messaging
+- Elasticsearch for search capabilities
+
+### Configuration Management
+
+Application configuration should remain external to the application binary. Sensitive values must be managed securely using Secrets.
+
+### Observability
+
+Production systems require centralized monitoring, metrics, and log aggregation to simplify operations and troubleshooting.
+
+---
+
+## Interview Questions & Short Answers
+
+### Why use Docker?
+
+Docker packages an application with all required dependencies, ensuring consistent execution across environments.
+
+---
+
+### Why Kubernetes instead of Docker alone?
+
+Docker provides containerization, while Kubernetes manages container orchestration, scaling, networking, rolling deployments, and self-healing.
+
+---
+
+### What is polyglot persistence?
+
+Using multiple database technologies within the same application, selecting the most appropriate database for each type of workload.
+
+---
+
+### Why not use MongoDB for everything?
+
+Transactional operations such as bookings and payments require strong ACID guarantees, making PostgreSQL a better choice.
+
+---
+
+### Why use Redis?
+
+Redis improves performance by caching frequently accessed data and reducing database load.
+
+---
+
+### What is the purpose of Kafka?
+
+Kafka enables asynchronous communication between services, improving scalability and reducing coupling.
+
+---
+
+### Why are ConfigMaps and Secrets separated?
+
+ConfigMaps store non-sensitive configuration, while Secrets securely store sensitive information such as passwords, API keys, and tokens.
+
+---
+
+## Challenges
+
+Initially, the deployment architecture focused only on MongoDB. During the review, the architecture was corrected to include PostgreSQL as part of the platform's polyglot persistence strategy. The document was also refined to follow a more professional enterprise architecture style rather than a tutorial format.
+
+---
+
+## Key Takeaway
+
+Deployment architecture is not only about where applications run but also about designing a reliable, scalable, secure, and maintainable platform. Separating deployment concerns from application logic results in systems that are easier to operate and evolve.
+
+---
+
+## Revision Notes
+
+- Docker packages applications.
+- Kubernetes manages containers.
+- PostgreSQL handles transactional workloads.
+- MongoDB stores document-oriented data.
+- Redis provides distributed caching.
+- Kafka enables asynchronous communication.
+- Elasticsearch powers full-text search.
+- GitHub Actions automates CI/CD.
+- Prometheus, Grafana, and Loki provide observability.
+
+---
+
+## Next Steps
+
+- Design the Security Architecture.
+- Learn Spring Security fundamentals.
+- Implement JWT-based authentication.
+- Design Role-Based Access Control (RBAC).
+- Define secure communication and secrets management.
