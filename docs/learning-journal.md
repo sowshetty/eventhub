@@ -1584,3 +1584,108 @@ A well-designed database architecture is driven by business responsibilities rat
 - Standardize pagination, validation, versioning, and error handling before implementation.
 
 ---
+
+---
+
+## Date
+
+23-Jul-2026
+
+## Sprint
+
+Sprint 1 – Architecture & Design
+
+## Topic
+
+Security Architecture
+
+## Objective
+
+Design a secure authentication and authorization architecture for the EventHub microservices platform using Spring Security, JWT-based authentication, role-based access control (RBAC), and industry security best practices.
+
+## Work Completed
+
+- Designed the overall security architecture for EventHub.
+- Selected Spring Security as the security framework.
+- Adopted JWT-based stateless authentication.
+- Defined Access Token and Refresh Token strategy.
+- Configured token expiration and rotation approach.
+- Designed Role-Based Access Control (RBAC).
+- Defined application roles:
+  - SUPER_ADMIN
+  - ADMIN
+  - EVENT_ORGANIZER
+  - CUSTOMER
+- Selected BCrypt for password hashing.
+- Defined password reset and change password flow.
+- Planned secure secret management using Kubernetes Secrets with future support for AWS Secrets Manager.
+- Included HTTPS/TLS as the communication standard.
+- Designed audit logging for security-sensitive operations.
+- Planned monitoring integration using Prometheus, Grafana, and Loki.
+- Identified future enhancements such as OAuth2, Google Login, GitHub Login, and Multi-Factor Authentication (MFA).
+
+## Key Concepts Learned
+
+- Spring Security
+- JWT Authentication
+- Access Token vs Refresh Token
+- Stateless Authentication
+- Role-Based Access Control (RBAC)
+- BCrypt Password Hashing
+- Spring Security Filter Chain
+- HTTPS/TLS
+- Security Audit Logging
+- Secret Management
+- Authentication vs Authorization
+
+## Interview Questions & Short Answers
+
+### What is JWT?
+
+A compact, signed token used to securely authenticate users without maintaining server-side sessions.
+
+### What is Stateless Authentication?
+
+The server does not store client session information. Each request carries its own authentication token.
+
+### What is RBAC?
+
+Role-Based Access Control restricts access to application resources based on user roles and permissions.
+
+### Why BCrypt?
+
+BCrypt securely hashes passwords using a one-way algorithm with built-in salting, making password cracking significantly more difficult.
+
+### What is the difference between Authentication and Authorization?
+
+Authentication verifies who the user is, while authorization determines what the authenticated user is allowed to access.
+
+### Why use Refresh Tokens?
+
+Refresh tokens allow clients to obtain new access tokens without requiring users to log in again, improving both security and user experience.
+
+## Challenges
+
+- Choosing an appropriate JWT expiration strategy.
+- Designing refresh token storage and rotation.
+- Defining security responsibilities across microservices while keeping authentication stateless.
+
+## Key Takeaway
+
+A secure microservices architecture combines strong authentication, fine-grained authorization, secure password management, encrypted communication, and proper secret management while keeping services stateless and scalable.
+
+## Revision Notes
+
+- Revise Spring Security architecture.
+- Review JWT lifecycle and token validation.
+- Practice explaining RBAC.
+- Compare session-based and stateless authentication.
+- Revise BCrypt and Refresh Token flow.
+
+## Next Steps
+
+- Design API standards for secure REST endpoints.
+- Implement authentication using Spring Security and JWT.
+- Configure authorization rules for each microservice.
+
+---
