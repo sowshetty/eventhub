@@ -1471,3 +1471,116 @@ Deployment architecture is not only about where applications run but also about 
 - Implement JWT-based authentication.
 - Design Role-Based Access Control (RBAC).
 - Define secure communication and secrets management.
+
+---
+
+# Learning Journal
+
+---
+
+## Date
+
+23-Jul-2026
+
+## Sprint
+
+Sprint 1 – Architecture & Design
+
+## Topic
+
+Database Architecture
+
+## Objective
+
+Design a scalable, secure, and maintainable database architecture for the EventHub microservices platform using the Database-per-Service pattern and polyglot persistence.
+
+## Work Completed
+
+- Designed the overall database architecture for EventHub.
+- Selected PostgreSQL as the primary relational database.
+- Selected MongoDB for document-oriented data storage.
+- Selected Redis for caching and performance optimization.
+- Selected Elasticsearch for full-text search capabilities.
+- Defined the Database-per-Service architecture for all microservices.
+- Assigned database ownership to each microservice.
+- Chose Flyway for PostgreSQL schema version management.
+- Standardized common audit fields across relational tables.
+- Defined data consistency using synchronous REST communication and asynchronous Kafka events where appropriate.
+- Documented database security, backup, and recovery strategies.
+- Finalized architecture decisions for all data storage technologies.
+- Confirmed Analytics Service uses PostgreSQL as its primary data store.
+- Standardized the References section across architecture documents.
+
+## Key Concepts Learned
+
+- Database-per-Service architecture
+- Polyglot Persistence
+- ACID vs NoSQL databases
+- PostgreSQL vs MongoDB use cases
+- Redis caching strategy
+- Elasticsearch for search
+- Flyway database migrations
+- Audit columns and optimistic locking
+- Data consistency in distributed systems
+- Microservice database ownership
+
+## Interview Questions & Short Answers
+
+### What is Database-per-Service?
+
+Each microservice owns its own database. Other services never access it directly.
+
+### What is Polyglot Persistence?
+
+Using different databases based on the business requirement rather than using one database for everything.
+
+### Why PostgreSQL?
+
+Provides ACID transactions, strong consistency, and excellent support for relational data.
+
+### Why MongoDB?
+
+Stores flexible, schema-less document data efficiently.
+
+### Why Redis?
+
+Improves application performance through in-memory caching.
+
+### Why Elasticsearch?
+
+Optimized for full-text search, filtering, and autocomplete.
+
+### Why Flyway?
+
+Manages database schema changes through version-controlled SQL migration scripts.
+
+### Why shouldn't one microservice access another service's database?
+
+It creates tight coupling and violates microservice boundaries. Services should communicate through APIs or events.
+
+## Challenges
+
+- Deciding which database technology best fits each microservice.
+- Choosing the primary data store for the Analytics Service.
+- Ensuring clear separation of responsibilities between Search and Analytics services.
+
+## Key Takeaway
+
+A well-designed database architecture is driven by business responsibilities rather than technology preferences. Each microservice should own its data, choose the most appropriate storage technology, and communicate with other services through APIs or events instead of sharing databases.
+
+## Revision Notes
+
+- Review Database-per-Service architecture.
+- Revise Polyglot Persistence.
+- Practice explaining Flyway migrations.
+- Compare PostgreSQL, MongoDB, Redis, and Elasticsearch use cases.
+- Revise data consistency patterns in microservices.
+
+## Next Steps
+
+- Create `docs/architecture/api-design-guidelines.md`
+- Define REST API standards.
+- Establish request and response conventions.
+- Standardize pagination, validation, versioning, and error handling before implementation.
+
+---
