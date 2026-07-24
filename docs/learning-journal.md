@@ -1689,3 +1689,356 @@ A secure microservices architecture combines strong authentication, fine-grained
 - Configure authorization rules for each microservice.
 
 ---
+
+# Learning Journal
+
+## Date
+24-Jul-2026
+
+## Sprint
+Sprint 2 – Architecture & Design Documentation
+
+## Topic
+API Design Guidelines
+
+---
+
+# Objective
+
+The objective of this activity was to establish a standardized API design specification for the EventHub microservices platform. The document defines consistent REST API conventions, naming standards, request and response structures, pagination, validation, versioning, security practices, and documentation standards to ensure all services expose predictable, maintainable, and scalable APIs.
+
+---
+
+# Work Completed
+
+Completed the API Design Guidelines document covering:
+
+- REST API design principles
+- API naming standards
+- HTTP methods and usage
+- Request design
+- Response design
+- Standard response format
+- HTTP status codes
+- Error response format
+- Pagination
+- Sorting
+- Filtering
+- Validation
+- API versioning
+- Idempotency
+- Date & time standards
+- UUID standards
+- File upload guidelines
+- OpenAPI (Swagger) standards
+- Security considerations
+- Architecture decisions
+- References
+- Version history
+
+---
+
+# Key Concepts Learned
+
+## RESTful API Design
+
+REST APIs should expose business resources using meaningful URIs and standard HTTP methods while remaining stateless and consistent.
+
+---
+
+## API Naming Standards
+
+Established naming conventions for:
+
+- Controllers
+- Services
+- Repositories
+- DTOs
+- Exceptions
+- Enums
+- Packages
+- JSON properties
+- HTTP headers
+- REST resource URIs
+
+Consistent naming improves readability, maintainability, and collaboration across teams.
+
+---
+
+## Standard HTTP Methods
+
+Learned the appropriate use of:
+
+- GET
+- POST
+- PUT
+- PATCH
+- DELETE
+
+Each method should represent a specific operation and be used consistently throughout the platform.
+
+---
+
+## Request Design
+
+Understood how to design API requests using:
+
+- Path variables
+- Query parameters
+- Request bodies
+- HTTP headers
+- Input validation
+
+Requests should remain simple, predictable, and self-explanatory.
+
+---
+
+## Response Design
+
+Defined a standardized response structure containing:
+
+- success
+- message
+- data
+- timestamp
+- correlationId
+
+This enables consistent API responses across all EventHub microservices.
+
+---
+
+## Correlation ID
+
+Learned the importance of propagating a Correlation ID across distributed microservices.
+
+Benefits include:
+
+- End-to-end request tracing
+- Easier debugging
+- Log correlation
+- Distributed troubleshooting
+
+---
+
+## Pagination
+
+Designed a standardized pagination response instead of exposing framework-specific pagination objects.
+
+This keeps API contracts independent of Spring Boot implementation details.
+
+---
+
+## Validation
+
+Input validation should occur before business logic execution.
+
+Validation improves:
+
+- Data integrity
+- Security
+- User experience
+
+---
+
+## API Versioning
+
+Selected URI-based versioning.
+
+Example:
+
+/api/v1/events
+
+This approach provides explicit version management and backward compatibility.
+
+---
+
+## UUID Standards
+
+UUIDs shall be used for all publicly exposed resource identifiers.
+
+Advantages:
+
+- Global uniqueness
+- Improved security
+- Reduced predictability
+- Better suitability for distributed systems
+
+---
+
+## Date & Time Standards
+
+Standardized on:
+
+- UTC storage
+- ISO-8601 format
+
+Example:
+
+2026-07-24T10:30:00Z
+
+This avoids timezone-related inconsistencies across distributed deployments.
+
+---
+
+## Swagger / OpenAPI
+
+Every public API should include:
+
+- Endpoint description
+- Request examples
+- Response examples
+- Error documentation
+- Security requirements
+
+Good documentation improves developer productivity and simplifies integration.
+
+---
+
+## Security Considerations
+
+Reviewed API security practices including:
+
+- HTTPS
+- JWT authentication
+- RBAC authorization
+- Input validation
+- CORS
+- Rate limiting
+- Secure error handling
+
+Security must be incorporated into API design from the beginning.
+
+---
+
+# Architecture Decisions
+
+The following design decisions were finalized for EventHub:
+
+| Area | Decision |
+|------|----------|
+| API Style | REST |
+| Data Format | JSON |
+| Naming Convention | Standardized API Naming Standards |
+| Authentication | JWT |
+| Authorization | Role-Based Access Control (RBAC) |
+| Resource Identifier | UUID |
+| Date Format | ISO-8601 (UTC) |
+| Versioning | URI-based (/api/v1) |
+| API Documentation | OpenAPI / Swagger |
+| Pagination | Standardized custom response |
+| Request Tracing | X-Correlation-ID |
+
+---
+
+# Enterprise Standards Applied
+
+Implemented enterprise API standards including:
+
+- RESTful resource-oriented API design
+- Consistent HTTP method usage
+- Standard request and response formats
+- Centralized naming conventions
+- Correlation ID for distributed tracing
+- Standardized error response structure
+- URI-based API versioning
+- UUID-based resource identifiers
+- ISO-8601 UTC timestamps
+- OpenAPI documentation standards
+- Secure API design practices
+
+---
+
+# Interview Questions & Answers
+
+### 1. Why is REST preferred for microservices?
+
+REST is lightweight, stateless, widely supported, and integrates easily with web and mobile applications.
+
+---
+
+### 2. Why use UUID instead of numeric IDs?
+
+UUIDs improve security by making identifiers difficult to predict while ensuring uniqueness across distributed systems.
+
+---
+
+### 3. Why include Correlation IDs?
+
+Correlation IDs allow a single request to be traced across multiple microservices, simplifying debugging and monitoring.
+
+---
+
+### 4. Why should APIs use standard response formats?
+
+A consistent response structure improves maintainability, simplifies client development, and provides predictable behavior.
+
+---
+
+### 5. Why avoid exposing Spring Boot Page objects?
+
+Framework-specific objects couple API consumers to implementation details. Custom pagination responses keep APIs framework-independent.
+
+---
+
+### 6. Why store timestamps in UTC?
+
+UTC eliminates timezone ambiguity and ensures consistent behavior across distributed deployments.
+
+---
+
+### 7. Why use OpenAPI?
+
+OpenAPI provides interactive documentation, improves collaboration, and simplifies API testing and client integration.
+
+---
+
+# Challenges / Observations
+
+- Designing consistent API standards requires balancing simplicity with enterprise requirements.
+- Avoiding framework-specific responses results in cleaner API contracts.
+- Establishing naming conventions early prevents inconsistencies during implementation.
+- Standardizing responses simplifies frontend integration and future maintenance.
+
+---
+
+# Key Takeaways
+
+API design is more than defining endpoints—it establishes a long-term contract between services and consumers.
+
+A well-defined API standard ensures consistency, scalability, maintainability, and easier collaboration across development teams.
+
+---
+
+# Revision Notes
+
+Before implementing the Auth Service, revise:
+
+- REST principles
+- HTTP methods
+- API naming standards
+- Standard response format
+- Correlation IDs
+- Pagination
+- Validation
+- UUID usage
+- Swagger documentation
+- Security guidelines
+
+---
+
+# Notes
+
+Key advice from this sprint:
+
+- API contracts should remain independent of framework implementations.
+- Standardization reduces maintenance effort as the system grows.
+- Design APIs for long-term stability rather than short-term convenience.
+- Documentation is part of the software product, not an afterthought.
+
+---
+
+# Next Steps
+
+Proceed with the **Global Exception Handling & Error
+
+---
