@@ -2042,3 +2042,515 @@ Key advice from this sprint:
 Proceed with the **Global Exception Handling & Error
 
 ---
+
+# Learning Journal – Global Exception Handling
+
+## Document Information
+
+| Item | Details |
+|------|---------|
+| Document | Learning Journal – Global Exception Handling |
+| Project | EventHub |
+| Phase | Architecture Phase |
+| Sprint | Sprint 8 |
+| Author | EventHub Architecture Team |
+| Version | 1.0 |
+
+---
+
+# 1. Session Objective
+
+The objective of this session was to design a comprehensive, enterprise-grade Global Exception Handling strategy for the EventHub microservices platform.
+
+The focus was on establishing standardized exception handling, error response structures, logging practices, observability, distributed tracing, resilience patterns, and security guidelines that can be consistently applied across all EventHub microservices.
+
+---
+
+# 2. Work Completed
+
+The following sections of the Global Exception Handling Architecture document were completed.
+
+- Purpose
+- Scope
+- Exception Handling Principles
+- Exception Hierarchy
+- Standard Error Response
+- Global Exception Handler
+- Custom Exceptions
+- Validation Exception Handling
+- Business Exception Handling
+- Security Exception Handling
+- Database Exception Handling
+- External Service Exception Handling
+- Logging Strategy
+- Correlation ID
+- Error Codes
+- HTTP Status Mapping
+- Retry and Resilience Strategy
+- Architecture Decisions Summary
+- References
+- Version History
+
+---
+
+# 3. Key Concepts Learned
+
+## 3.1 Centralized Exception Handling
+
+### Learned
+
+Enterprise applications should centralize exception handling using Spring Boot's `@RestControllerAdvice` instead of writing repetitive exception handling logic in every controller.
+
+### Benefits
+
+- Consistent API responses
+- Reduced duplicate code
+- Easier maintenance
+- Improved readability
+- Better scalability
+
+---
+
+## 3.2 Exception Hierarchy
+
+Designed a custom exception hierarchy using a common base exception.
+
+Example hierarchy:
+
+```
+RuntimeException
+        │
+        ▼
+EventHubException
+        │
+ ├── ValidationException
+ ├── AuthenticationException
+ ├── AuthorizationException
+ ├── ResourceNotFoundException
+ ├── DuplicateResourceException
+ ├── BookingClosedException
+ ├── DatabaseException
+ ├── ExternalServiceException
+ └── InternalServerException
+```
+
+### Benefits
+
+- Clear separation of responsibilities
+- Better maintainability
+- Standardized error handling
+- Easier debugging
+
+---
+
+## 3.3 Standard Error Response
+
+Learned that every failed API request should return a standardized response.
+
+Standard fields:
+
+- success
+- message
+- errorCode
+- status
+- path
+- timestamp
+- correlationId
+
+Benefits:
+
+- Predictable API behavior
+- Easier frontend integration
+- Improved debugging
+
+---
+
+## 3.4 Validation vs Business Exceptions
+
+### Validation Exceptions
+
+Occur before business logic executes.
+
+Examples:
+
+- Invalid email
+- Missing required field
+- Invalid request payload
+
+### Business Exceptions
+
+Occur after validation succeeds but business rules prevent the operation.
+
+Examples:
+
+- Event registration closed
+- Duplicate booking
+- Payment already completed
+
+---
+
+## 3.5 Security Exception Handling
+
+Learned the difference between:
+
+### 401 Unauthorized
+
+Authentication failed or is missing.
+
+Examples:
+
+- Invalid JWT
+- Expired JWT
+- Missing authentication token
+
+### 403 Forbidden
+
+Authentication succeeded but access is denied.
+
+Examples:
+
+- Customer accessing admin endpoint
+- Organizer modifying another organizer's event
+
+---
+
+## 3.6 Database Exception Handling
+
+Learned why database implementation details should never be exposed.
+
+Recommended flow:
+
+```
+Database
+
+↓
+
+Hibernate Exception
+
+↓
+
+Spring Exception
+
+↓
+
+DatabaseException
+
+↓
+
+GlobalExceptionHandler
+
+↓
+
+Standard Error Response
+```
+
+Benefits:
+
+- Better security
+- Database independence
+- Cleaner API responses
+
+---
+
+## 3.7 External Service Exception Handling
+
+Designed a strategy for handling failures from:
+
+- Payment Gateway
+- Email Service
+- SMS Gateway
+- External REST APIs
+
+without exposing third-party implementation details.
+
+---
+
+## 3.8 Logging Strategy
+
+Learned enterprise logging practices.
+
+Each log should contain:
+
+- Timestamp
+- Log Level
+- Service Name
+- Correlation ID
+- HTTP Method
+- Request Path
+- User Identifier (when available)
+- Error Code
+- Exception Type
+
+Sensitive information must never be logged.
+
+Examples:
+
+- Passwords
+- JWT Tokens
+- API Keys
+- Secret Keys
+- Credit Card Details
+
+---
+
+## 3.9 Correlation ID and Distributed Tracing
+
+Initially explored Correlation IDs.
+
+Later improved the architecture by deciding to adopt distributed tracing from the beginning.
+
+EventHub will implement:
+
+- Correlation ID
+- Trace ID
+- Span ID
+
+using
+
+- Micrometer Tracing
+- OpenTelemetry
+
+Correlation IDs will remain part of the public API contract while Trace IDs and Span IDs will support internal observability.
+
+---
+
+## 3.10 Error Code Strategy
+
+Established a centralized Error Code strategy.
+
+Examples:
+
+```
+USER_NOT_FOUND
+
+BOOKING_ALREADY_CANCELLED
+
+PAYMENT_FAILED
+
+DATABASE_ERROR
+
+EXTERNAL_SERVICE_ERROR
+```
+
+Also decided that:
+
+A dedicated **Error Code Registry** will be created during the implementation phase to maintain all published error codes.
+
+---
+
+## 3.11 HTTP Status Mapping
+
+Learned that:
+
+HTTP Status Codes
+
+represent the transport-level outcome.
+
+Application Error Codes
+
+represent the business or technical reason for failure.
+
+Example:
+
+```
+404 Not Found
+```
+
++
+
+```
+USER_NOT_FOUND
+```
+
+---
+
+## 3.12 Retry and Resilience
+
+Designed EventHub's resilience strategy.
+
+Standard technologies:
+
+- Resilience4j Retry
+- Circuit Breaker
+- Bulkhead
+- Time Limiter
+- Fallback Strategy
+
+Retries should only be performed for transient failures.
+
+---
+
+# 4. Major Architectural Decisions
+
+During this sprint the following decisions were made.
+
+- Centralized Global Exception Handling using `@RestControllerAdvice`
+- Standard API Response Format
+- Custom Exception Hierarchy
+- Standard Error Response Structure
+- Structured JSON Logging
+- Correlation ID for API requests
+- Distributed Tracing using Micrometer Tracing and OpenTelemetry
+- Centralized Error Code Strategy
+- Error Code Registry during implementation phase
+- Standard HTTP Status Mapping
+- Retry and Resilience using Resilience4j
+
+---
+
+# 5. Interview Preparation Notes
+
+## Question 1
+
+Why use `@RestControllerAdvice`?
+
+### Answer
+
+It centralizes exception handling, eliminates duplicate code, and ensures consistent API responses.
+
+---
+
+## Question 2
+
+Difference between 401 and 403?
+
+### Answer
+
+401 means authentication failed.
+
+403 means authentication succeeded but authorization failed.
+
+---
+
+## Question 3
+
+Why create custom exceptions?
+
+### Answer
+
+They improve readability, maintainability, and allow meaningful business-specific error handling.
+
+---
+
+## Question 4
+
+Why should SQL errors never be returned to clients?
+
+### Answer
+
+They expose implementation details and create security risks.
+
+---
+
+## Question 5
+
+What is a Correlation ID?
+
+### Answer
+
+A unique request identifier used for request tracking across services.
+
+---
+
+## Question 6
+
+What is Distributed Tracing?
+
+### Answer
+
+Distributed tracing tracks a request across multiple microservices using Trace IDs and Span IDs.
+
+---
+
+## Question 7
+
+When should retries be performed?
+
+### Answer
+
+Only for transient failures such as network issues, temporary service outages, or timeouts.
+
+---
+
+## Question 8
+
+Why separate HTTP Status Codes from Error Codes?
+
+### Answer
+
+HTTP Status describes the protocol result, while Error Codes describe the application-specific failure.
+
+---
+
+# 6. Challenges Faced
+
+During this sprint the following architectural challenges were discussed.
+
+- Distinguishing validation exceptions from business exceptions.
+- Designing a scalable Error Code strategy.
+- Understanding Correlation IDs versus Distributed Tracing.
+- Deciding when to create the Error Code Registry.
+- Defining retry policies without causing cascading failures.
+
+---
+
+# 7. Key Takeaways
+
+This session reinforced several important software engineering principles.
+
+- Exception handling is an architectural concern, not merely a coding task.
+- Standardized error responses improve API consistency.
+- Logging and observability are essential for production systems.
+- Security requires protecting internal implementation details.
+- Distributed tracing simplifies debugging in microservices.
+- Resilience patterns improve system reliability.
+- Consistent standards reduce maintenance costs across multiple services.
+
+---
+
+# 8. Revision Checklist
+
+Before implementation, revise the following topics.
+
+- Spring Boot Exception Handling
+- `@RestControllerAdvice`
+- Spring Security Exception Flow
+- HTTP Status Codes
+- Jakarta Bean Validation
+- Micrometer Tracing
+- OpenTelemetry
+- Resilience4j
+- Structured Logging
+- Correlation ID propagation
+
+---
+
+# 9. Next Steps
+
+Proceed to the **API Gateway Architecture** document.
+
+The API Gateway will integrate many concepts introduced during this sprint, including:
+
+- JWT Authentication
+- Authorization
+- Request Routing
+- Correlation ID Propagation
+- Distributed Tracing
+- Logging
+- Rate Limiting
+- CORS
+- Security Headers
+- Global Error Handling
+
+---
+
+# 10. Personal Reflection
+
+This sprint transformed my understanding of exception handling from a simple programming concept into a complete enterprise architecture discipline.
+
+I learned how standardized exception handling, structured logging, distributed tracing, resilience patterns, and centralized error management work together to build reliable, secure, and maintainable microservices.
+
+These concepts will serve as the foundation for implementing every EventHub microservice and significantly strengthen my understanding of enterprise Java backend development.
+
+---
+
