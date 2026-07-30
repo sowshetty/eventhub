@@ -639,7 +639,7 @@ Topics to cover:
 Sprint 1 – Architecture & Design
 ---
 
-# Session Objectives
+# Objectives
 
 Today's objective was to finalize the EventHub repository structure and establish the engineering foundation before beginning architecture documentation and implementation.
 
@@ -910,7 +910,7 @@ Used `.gitkeep` temporarily until real project files are added.
 
 # Software Engineering Learnings
 
-Today's session reinforced several software engineering principles.
+Today's learning reinforced several software engineering principles.
 
 - Architecture should be planned before implementation.
 - Repository organization affects maintainability.
@@ -2058,7 +2058,7 @@ Proceed with the **Global Exception Handling & Error
 
 ---
 
-# 1. Session Objective
+# 1.  Objective
 
 The objective of this session was to design a comprehensive, enterprise-grade Global Exception Handling strategy for the EventHub microservices platform.
 
@@ -2551,6 +2551,204 @@ This sprint transformed my understanding of exception handling from a simple pro
 I learned how standardized exception handling, structured logging, distributed tracing, resilience patterns, and centralized error management work together to build reliable, secure, and maintainable microservices.
 
 These concepts will serve as the foundation for implementing every EventHub microservice and significantly strengthen my understanding of enterprise Java backend development.
+
+---
+
+# Learning Journal
+
+## Date
+
+30-Jul-2026
+
+## Sprint
+
+Sprint 2 – Architecture & Design
+
+## Topic
+
+API Gateway Architecture
+
+---
+
+# Objective
+
+Design a production-ready API Gateway architecture for the EventHub platform that provides a secure, scalable, and maintainable entry point for all client applications. The objective was to define the responsibilities of the gateway, establish clear architectural boundaries, and document the design decisions that align with modern enterprise microservices.
+
+---
+
+# Work Completed
+
+Completed the API Gateway Architecture document covering:
+
+- Purpose and Responsibilities
+- Request Routing
+- Authentication Strategy
+- Authorization Flow
+- JWT Validation
+- Public vs Protected Endpoints
+- Rate Limiting
+- CORS Strategy
+- Security Headers
+- Correlation ID Propagation
+- Distributed Tracing
+- Centralized Logging
+- Service Discovery Integration
+- Error Handling
+- Architecture Decisions (ADR)
+- Best Practices
+- Version History
+
+---
+
+# Technical Understanding
+
+While designing the API Gateway for EventHub, I revisited the role of a gateway within a distributed microservices architecture.
+
+One of the primary architectural decisions was to expose only the API Gateway to external clients while keeping all business microservices private. This approach reduces the attack surface, simplifies client communication, and centralizes infrastructure concerns.
+
+Rather than allowing each microservice to implement authentication, request routing, CORS configuration, logging, and rate limiting independently, these cross-cutting concerns are consolidated within the gateway. This keeps individual services focused solely on business capabilities.
+
+Spring Cloud Gateway was selected because it integrates well with the Spring ecosystem, supports reactive request processing, works seamlessly with Spring Security and Service Discovery, and is widely adopted in enterprise cloud-native applications.
+
+Another important design consideration was ensuring that the API Gateway remains an infrastructure component rather than a business service. Business validation, business rules, and database operations should always remain within their respective domain services.
+
+---
+
+# Design Decisions
+
+The following architectural decisions were finalized for EventHub.
+
+- Spring Cloud Gateway will serve as the single entry point.
+- Clients will never access internal microservices directly.
+- JWT Access Tokens will be validated before requests reach business services.
+- Public endpoints such as Login and Registration will bypass authentication.
+- Protected endpoints will require successful token validation.
+- Cross-cutting concerns will remain centralized within the gateway.
+- Business logic will never be implemented inside the gateway.
+- Correlation IDs will be generated and propagated across downstream services.
+- Gateway logging will capture every incoming request.
+- Service locations will be resolved dynamically through Service Discovery rather than hardcoded URLs.
+
+---
+
+# Key Concepts Reinforced
+
+- API Gateway Pattern
+- Single Entry Point Architecture
+- Reverse Proxy
+- Cross-Cutting Concerns
+- Spring Cloud Gateway
+- JWT Authentication
+- Request Routing
+- Gateway Filters
+- Rate Limiting
+- CORS
+- Security Headers
+- Distributed Tracing
+- Correlation IDs
+- Service Discovery
+
+---
+
+# Enterprise Best Practices Identified
+
+While documenting this architecture, several enterprise practices became evident.
+
+- Infrastructure responsibilities should remain separate from business logic.
+- Authentication should be validated before requests reach downstream services.
+- Clients should interact with a single endpoint regardless of the number of backend services.
+- Logging and tracing should be centralized to simplify production support.
+- Dynamic service discovery improves scalability and deployment flexibility.
+- Standardized gateway policies improve consistency across all APIs.
+
+---
+
+# Interview Perspective
+
+### Why is an API Gateway required in a Microservices Architecture?
+
+An API Gateway provides a centralized entry point that manages authentication, routing, security, rate limiting, logging, and request tracing while simplifying client interaction.
+
+---
+
+### Why shouldn't business logic be placed inside the API Gateway?
+
+The gateway is an infrastructure component. Embedding business logic creates tight coupling, violates separation of concerns, and makes future maintenance more difficult.
+
+---
+
+### Why was Spring Cloud Gateway selected?
+
+Because it provides native integration with Spring Boot, Spring Security, Service Discovery, reactive routing, filters, observability, and cloud-native deployment patterns.
+
+---
+
+### What are Cross-Cutting Concerns?
+
+Common technical capabilities shared across multiple services such as authentication, authorization, logging, CORS, monitoring, rate limiting, tracing, and security headers.
+
+---
+
+### API Gateway vs Load Balancer
+
+A Load Balancer distributes traffic among multiple instances of the same service.
+
+An API Gateway performs intelligent request routing while also handling authentication, authorization, filtering, logging, security, and traffic management.
+
+---
+
+# Key Takeaways
+
+Designing the API Gateway reinforced the importance of separating infrastructure responsibilities from domain logic.
+
+The gateway acts as the front door of the platform, providing centralized security, routing, observability, and policy enforcement while allowing each microservice to remain independently deployable and business-focused.
+
+A well-designed gateway improves maintainability, reduces duplicated infrastructure code, and provides a consistent interface for all client applications.
+
+---
+
+# Revision Notes
+
+Before implementation, revise:
+
+- Spring Cloud Gateway
+- Gateway Filters
+- JWT Validation Flow
+- Request Routing
+- Service Discovery
+- Correlation IDs
+- Distributed Tracing
+- Rate Limiting
+- CORS Configuration
+- Security Headers
+
+---
+
+# Next Step
+
+Design the Authentication Service Architecture, including:
+
+- User Authentication
+- JWT Generation
+- Refresh Tokens
+- Role-Based Access Control (RBAC)
+- Password Encryption
+- Authentication APIs
+- Token Lifecycle
+- Security Best Practices
+
+---
+
+# Personal Engineering Notes
+
+The API Gateway architecture establishes the foundation for the entire EventHub platform.
+
+Documenting the architecture before implementation helped finalize responsibilities, define clear service boundaries, and standardize how infrastructure concerns will be handled across the system.
+
+This documentation will also serve as a reference during implementation and provide architectural context when discussing design decisions in technical interviews.
+
+---
+**Status:** ✅ API Gateway Architecture Completed
 
 ---
 
