@@ -36,7 +36,7 @@ The Booking Service manages event ticket bookings. It handles booking creation, 
 # 3. High-Level Architecture
 
 ```text
-             Client
+                         Client
                 │
                 ▼
           API Gateway
@@ -45,9 +45,12 @@ The Booking Service manages event ticket bookings. It handles booking creation, 
                 │
                 ▼
          Booking Service
-                │
-                ▼
-           booking_db
+          │          │
+          │          ├──────────────► Kafka
+          │          │               BookingCreated
+          │          │               BookingCancelled
+          ▼          │
+      booking_db     │
 ```
 
 ---
