@@ -35,13 +35,13 @@ The Notification Service is responsible for sending email notifications based on
 # 3. High-Level Architecture
 
 ```text
-                  Kafka
+                                  Kafka
                     │
                     ▼
         Notification Service
-           │             │
-           ▼             ▼
- notification_db     Email Server
+                    │
+                    ▼
+              Email Server
 ```
 
 ---
@@ -77,21 +77,7 @@ The Notification Service is responsible for sending email notifications based on
 
 ---
 
-# 6. Database Overview
-
-**Database**
-
-`notification_db`
-
-**Primary Tables**
-
-| Table |
-|--------|
-| notifications |
-
----
-
-# 7. API Endpoints
+# 6. API Endpoints
 
 No public REST APIs.
 
@@ -99,24 +85,25 @@ Notifications are processed through Kafka event consumers.
 
 ---
 
-# 8. Architecture Decisions (ADR)
+# 7. Architecture Decisions (ADR)
 
 | Decision | Choice |
 |----------|--------|
-| Database | PostgreSQL |
 | Communication | Kafka |
 | Notification Channel | Email |
 | Processing | Asynchronous |
+| Persistence| Not Required (Version 1)|
 
 ---
 
-# 9. Future Enhancements
+# 8. Future Enhancements
 
 - SMS Notifications
 - Push Notifications
 - WhatsApp Notifications
 - Retry Mechanism
 - Dead Letter Queue (DLQ)
+- Notification History Database
 
 ---
 
