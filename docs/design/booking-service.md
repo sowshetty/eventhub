@@ -69,7 +69,7 @@ The Booking Service manages event ticket bookings. It handles booking creation, 
 
 ---
 
-# 5. Event Flow
+# 5. Kafka Event Flow
 
 ### Kafka Role
 

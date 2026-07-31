@@ -72,22 +72,17 @@ The Event Service manages the complete lifecycle of events, including event crea
 
 ---
 
-# 5. Event Flow
+# 5. Kafka Event Flow
 
 ### Kafka Role
 
-Producer & Consumer
+Producer 
 
 ### Published Events
 
-- BookingCreated
-- BookingCancelled
-- BookingConfirmed
-
-### Consumed Events
-
-- PaymentCompleted
-- PaymentFailed
+- EventCreated
+- EventUpdated
+- EventDeleted
 
 ---
 
