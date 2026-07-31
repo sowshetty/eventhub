@@ -37,18 +37,22 @@ The Event Service manages the complete lifecycle of events, including event crea
 # 3. High-Level Architecture
 
 ```text
-            Client
-               │
-               ▼
-         API Gateway
-               │
-      JWT Validation
-               │
-               ▼
-         Event Service
-               │
-               ▼
-           event_db
+                        Client
+                │
+                ▼
+          API Gateway
+                │
+       JWT Validation
+                │
+                ▼
+          Event Service
+          │          │
+          │          ├──────────────► Kafka
+          │          │               EventCreated
+          │          │               EventUpdated
+          │          │               EventDeleted
+          ▼          │
+          event_db
 ```
 
 ---
@@ -68,7 +72,26 @@ The Event Service manages the complete lifecycle of events, including event crea
 
 ---
 
-# 5. Database Overview
+# 5. Event Flow
+
+### Kafka Role
+
+Producer & Consumer
+
+### Published Events
+
+- BookingCreated
+- BookingCancelled
+- BookingConfirmed
+
+### Consumed Events
+
+- PaymentCompleted
+- PaymentFailed
+
+---
+
+# 6. Database Overview
 
 **Database**
 
@@ -83,7 +106,7 @@ The Event Service manages the complete lifecycle of events, including event crea
 
 ---
 
-# 6. API Endpoints
+# 7. API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -95,7 +118,7 @@ The Event Service manages the complete lifecycle of events, including event crea
 
 ---
 
-# 7. Architecture Decisions (ADR)
+# 8. Architecture Decisions (ADR)
 
 | Decision | Choice |
 |----------|--------|
@@ -107,7 +130,7 @@ The Event Service manages the complete lifecycle of events, including event crea
 
 ---
 
-# 8. Future Enhancements
+# 9. Future Enhancements
 
 - Event Images
 - Event Tags
@@ -117,7 +140,7 @@ The Event Service manages the complete lifecycle of events, including event crea
 
 ---
 
-# 9. References
+# 10. References
 
 - Spring Boot Documentation
 - Spring Data JPA Documentation
