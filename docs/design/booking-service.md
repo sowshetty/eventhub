@@ -69,7 +69,26 @@ The Booking Service manages event ticket bookings. It handles booking creation, 
 
 ---
 
-# 5. Database Overview
+# 5. Event Flow
+
+### Kafka Role
+
+Producer & Consumer
+
+### Published Events
+
+- BookingCreated
+- BookingCancelled
+- BookingConfirmed
+
+### Consumed Events
+
+- PaymentCompleted
+- PaymentFailed
+
+---
+
+# 6. Database Overview
 
 **Database**
 
@@ -83,7 +102,7 @@ The Booking Service manages event ticket bookings. It handles booking creation, 
 
 ---
 
-# 6. API Endpoints
+# 7. API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -94,7 +113,7 @@ The Booking Service manages event ticket bookings. It handles booking creation, 
 
 ---
 
-# 7. Architecture Decisions (ADR)
+# 8. Architecture Decisions (ADR)
 
 | Decision | Choice |
 |----------|--------|
@@ -106,7 +125,7 @@ The Booking Service manages event ticket bookings. It handles booking creation, 
 
 ---
 
-# 8. Future Enhancements
+# 9. Future Enhancements
 
 - Seat Selection
 - Booking History
@@ -116,7 +135,7 @@ The Booking Service manages event ticket bookings. It handles booking creation, 
 
 ---
 
-# 9. References
+# 10. References
 
 - Spring Boot Documentation
 - Spring Data JPA Documentation
