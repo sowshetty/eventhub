@@ -35,82 +35,100 @@ This project focuses on writing clean, maintainable, scalable, secure, and produ
 | Category | Technology |
 |-----------|------------|
 | Language | Java 21 LTS |
-| Framework | Spring Boot 3.x |
+| Framework | Spring Boot 3.5.x |
+| Microservices | Spring Cloud |
 | Security | Spring Security, JWT |
 | Database | PostgreSQL |
-| NoSQL | MongoDB |
-| Cache | Redis |
-| Search | Elasticsearch |
+| Database Migration | Flyway |
 | Messaging | Apache Kafka |
 | API Documentation | Swagger / OpenAPI |
 | Build Tool | Maven |
 | Version Control | Git & GitHub |
 | Containerization | Docker & Docker Compose |
-| CI/CD | Jenkins, GitHub Actions |
+| CI/CD | GitHub Actions, Jenkins |
 | Orchestration | Kubernetes |
 | Cloud | AWS |
-| Monitoring | Spring Boot Actuator, Prometheus, Grafana 
-
+| Monitoring | Spring Boot Actuator |
+| Phase 2 | Elasticsearch, Redis, Prometheus, Grafana |
 ---
 
 # Core Technologies
 
 - Java 21 LTS
-- Spring Boot 3.x
+- Spring Boot 3.5.x
+- Spring Cloud
 - Spring Security
 - Spring Data JPA
 - Spring Cloud Gateway
 - Apache Kafka
 - PostgreSQL
-- MongoDB
-- Redis
-- Elasticsearch
+- Flyway
 - Docker
 - Kubernetes
-- Jenkins
 - GitHub Actions
-- AWS
+- Jenkins
 - Swagger / OpenAPI
+- AWS (Deployment)
 
 ---
 
 # High-Level Architecture
 
-```
-                API Gateway
-                     │
-      ┌──────────────┼──────────────┐
-      │              │              │
- Authentication   User Service   Event Service
-                                     │
-                              Booking Service
-                                     │
-                           Notification Service
-                                     │
-                             Search Service
-                                     │
-                           Analytics Service
+```text
+                               Client
+                                  │
+                                  ▼
+                            API Gateway
+                                  │
+          ┌───────────────────────┼────────────────────────┐
+          ▼                       ▼                        ▼
+ Authentication Service     User Service          Event Service
+                                                          │
+                                                          ▼
+                                                   Booking Service
+                                                          │
+                                                          ▼
+                                                   Payment Service
+
+                      ─────────── Kafka Event Bus ───────────
+
+                            ▼                      ▼
+                 Notification Service     Analytics Service
+
+
+           Discovery Server      Configuration Server
 ```
 
-> Detailed architecture diagrams will be added in future sprints.
+> Each microservice owns its database and communicates synchronously using REST APIs and asynchronously using Apache Kafka events.
 
 ---
 
 # Repository Structure
 
-```
+```text
 eventhub/
 │
-├── backend/
 ├── docs/
-├── architecture/
-├── docker/
-├── kubernetes/
-├── monitoring/
-├── openapi/
+│   ├── architecture/
+│   ├── design/
+│   ├── api/
+│   ├── database/
+│   ├── operations/
+│   ├── prd.md
+│   ├── frd.md
+│   └── learning-journal.md
+│
+├── services/
+│
+├── infrastructure/
+│   ├── docker/
+│   └── kubernetes/
+│
 ├── scripts/
 │
 ├── README.md
+├── CHANGELOG.md
+├── ENGINEERING-PORTFOLIO.md
 └── .gitignore
 ```
 
@@ -161,35 +179,64 @@ Deployment
 
 # Current Status
 
-Current Development Stage: Sprint 0 – Project Foundation
+**Current Version:** 0.2.0
 
-**Version:** 0.1
+**Current Sprint:** Sprint 1 – Implementation
 
-**Sprint:** Sprint 0
+**Project Status:** 🟢 Architecture Complete | Ready for Development
 
-**Status:** Planning & Architecture Phase
+## Completed
 
+- Product Requirements Document (PRD)
+- Functional Requirements Document (FRD)
+- System Architecture
+- Infrastructure Architecture
+- Service Design Documents
+- Database Design
+- Learning Journal
+- Engineering Portfolio
+- Changelog
+
+## Next Milestone
+
+- Discovery Server
+- Configuration Server
+- API Gateway
+- Authentication Service
+- JWT Security
+- Flyway Integration
 ---
 
 # Roadmap
 
-- Sprint 0 – Planning & Architecture
-- Sprint 1 – Authentication Service
-- Sprint 2 – User & Organization Services
-- Sprint 3 – Event Management
-- Sprint 4 – Booking & Notifications
-- Sprint 5 – Search & Analytics
-- Sprint 6 – Docker, Jenkins & GitHub Actions
-- Sprint 7 – Kubernetes & AWS
-- Sprint 8 – Monitoring, Testing & Interview Preparation
+| Sprint | Milestone | Status |
+|---------|-----------|--------|
+| Sprint 0 | Project Planning & Architecture | ✅ Completed |
+| Sprint 1 | Infrastructure Services (Discovery, Config, API Gateway) | 🔄 Next |
+| Sprint 2 | Authentication & User Service | ⏳ Planned |
+| Sprint 3 | Event Management Service | ⏳ Planned |
+| Sprint 4 | Booking & Payment Services | ⏳ Planned |
+| Sprint 5 | Notification & Analytics Services | ⏳ Planned |
+| Sprint 6 | Docker, CI/CD & Kubernetes | ⏳ Planned |
+| Sprint 7 | Monitoring & Observability | ⏳ Planned |
+| Sprint 8 | Elasticsearch Integration & Production Readiness | ⏳ Planned |
 
 ---
 
 # Documentation
 
-Project documentation will be maintained under the `docs/` directory.
+The project documentation is organized under the `docs/` directory.
 
-Additional architecture documents, API specifications, deployment guides, and technical notes will be added incrementally during development.
+- Product Requirements Document (PRD)
+- Functional Requirements Document (FRD)
+- Architecture Documents
+- Service Design Documents
+- Database Design
+- Learning Journal
+- Engineering Portfolio
+- Changelog
+
+Documentation will continue to evolve alongside the implementation while avoiding unnecessary duplication.
 
 ---
 
