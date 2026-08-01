@@ -2838,5 +2838,34 @@ Architecture phase is complete. The next phase is implementation.
 
 ---
 
+# Learning Journal
+
+## 2026-08-01
+
+### Development Environment Setup
+
+Completed the Java development environment for EventHub.
+
+### Key Learnings
+
+- Installed Oracle JDK 21 LTS.
+- Configured JAVA_HOME and PATH.
+- Installed Apache Maven 3.9.16.
+- Moved Maven local repository to E:\Development\.m2\repository.
+- Verified Maven downloads dependencies from E: drive.
+- Installed Docker Desktop and verified Docker CLI.
+- Configured IntelliJ IDEA for Java development.
+- Organized development workspace on E: drive.
+
+### Why This Matters
+
+A properly configured environment avoids build issues, keeps the C: drive clean, and provides a consistent foundation for enterprise Java development.
+
+### Next Step
+
+Begin implementation with the Discovery Server microservice.
+
+---
+
 
 
