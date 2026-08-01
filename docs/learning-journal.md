@@ -2752,3 +2752,91 @@ This documentation will also serve as a reference during implementation and prov
 
 ---
 
+## Architecture & Design Learnings
+
+### Authentication & Authorization in Microservices
+
+Today I finalized the Authentication Service architecture for EventHub. Authentication is centralized in the Authentication Service, while authorization is performed by individual business services using JWT claims. The API Gateway validates JWT tokens before forwarding requests to downstream services.
+
+Key Learnings:
+- Authentication and Authorization are separate responsibilities.
+- API Gateway validates JWT tokens.
+- Business services perform authorization based on user roles and resource ownership.
+- JWT enables stateless authentication across microservices.
+
+Interview Notes:
+- Authentication verifies identity.
+- Authorization determines permitted actions.
+- API Gateway should not contain business authorization logic.
+
+---
+
+### Event-Driven Architecture using Kafka
+
+Refined the communication model for EventHub by identifying Kafka producers and consumers for each microservice.
+
+Key Learnings:
+- Event Service publishes event lifecycle events.
+- Booking Service publishes booking events and consumes payment events.
+- Payment Service consumes booking events and publishes payment events.
+- Notification Service consumes events to send notifications.
+- Analytics Service consumes business events for reporting and dashboards.
+
+Interview Notes:
+- Kafka enables asynchronous communication.
+- Event-driven architecture reduces service coupling.
+- Business services communicate using events instead of direct synchronous calls where appropriate.
+
+---
+
+### Database Strategy
+
+Finalized the database architecture for Version 1.
+
+Key Learnings:
+- PostgreSQL will be the primary transactional database.
+- Database per Service pattern will be followed.
+- No cross-database joins.
+- Services communicate through REST APIs or Kafka events.
+
+Decision:
+- MongoDB is not required because the domain model is relational.
+- Elasticsearch will be introduced in Phase 2 for advanced search capabilities.
+
+---
+
+### Flyway Database Migration
+
+Learned the importance of version-controlled database migrations.
+
+Key Learnings:
+- Flyway manages database schema versions.
+- Database changes are maintained as SQL migration scripts.
+- Each migration executes only once.
+- Hibernate will validate the schema, while Flyway will manage schema creation and updates.
+
+Interview Notes:
+- Flyway provides database version control.
+- Database schema changes become part of source control.
+- Roll-forward migrations are preferred over manual database modifications.
+
+---
+
+### Documentation Strategy
+
+Completed the architecture and service design documentation for EventHub.
+
+Key Learnings:
+- Keep documentation concise and implementation-focused.
+- One architecture document per infrastructure component.
+- One design document per microservice.
+- Avoid unnecessary documentation duplication.
+- Documentation should support implementation rather than delay it.
+
+Decision:
+Architecture phase is complete. The next phase is implementation.
+
+---
+
+
+
