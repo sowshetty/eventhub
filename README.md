@@ -34,7 +34,7 @@ This project focuses on writing clean, maintainable, scalable, secure, and produ
 
 | Category | Technology |
 |-----------|------------|
-| Language | Java 21 LTS |
+| Language | Java 21 LTS (Oracle JDK) |
 | Framework | Spring Boot 3.5.x |
 | Microservices | Spring Cloud |
 | Security | Spring Security, JWT |
