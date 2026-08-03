@@ -2866,6 +2866,27 @@ A properly configured environment avoids build issues, keeps the C: drive clean,
 Begin implementation with the Discovery Server microservice.
 
 ---
+## Sprint 1 – Discovery Service
 
+### Date
+03-Aug-2026
+
+### Completed
+- Created Discovery Service using Spring Boot 4.1
+- Configured Maven and Spring Cloud
+- Learned POM, Parent POM, BOM and transitive dependencies
+- Understood IoC and Dependency Injection
+- Configured application.yaml
+- Started Eureka Server on port 8761
+- Verified Eureka Dashboard at http://localhost:8761
+
+### Key Learnings
+- Maven manages dependencies automatically.
+- Spring Boot simplifies application setup through auto-configuration.
+- Eureka acts as a service registry for microservices.
+- application.yaml separates configuration from application code.
+
+### Next Sprint
+- Build the Config Server.
 
 
