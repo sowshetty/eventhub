@@ -2889,4 +2889,60 @@ Begin implementation with the Discovery Server microservice.
 ### Next Sprint
 - Build the Config Server.
 
+---
+
+## Sprint 2 – Spring Cloud Config Server & Config Client
+
+### Date
+05-Aug-2026
+
+### Objective
+Implement centralized configuration management using Spring Cloud Config.
+
+### What I Learned
+
+- Created a dedicated `eventhub-config` Git repository to store centralized configuration.
+- Implemented `config-service` using Spring Cloud Config Server.
+- Enabled Config Server using `@EnableConfigServer`.
+- Configured Config Server to read configuration from the local Git repository using:
+  ```yaml
+  spring.cloud.config.server.git.uri
+  ```
+- Learned the purpose of:
+  - `default-label`
+  - `clone-on-start`
+- Understood that Config Server exposes configuration through REST endpoints.
+- Created `discovery-service.yaml` in the configuration repository.
+- Converted Discovery Service into a Config Client by:
+  - Adding `spring-cloud-starter-config`
+  - Using:
+    ```yaml
+    spring.config.import=configserver:http://localhost:8888
+    ```
+- Successfully started Discovery Service using configuration downloaded from Config Server instead of the local `application.yaml`.
+
+### Key Takeaways
+
+- Configuration should be externalized from application code.
+- `spring.application.name` determines which configuration file Config Server loads.
+- Configuration is stored in Git and served through Config Server.
+- Infrastructure startup order:
+  1. Config Server
+  2. Discovery Service
+  3. API Gateway
+  4. Business Services
+
+### Challenges Faced
+
+- IntelliJ did not automatically recognize the copied Config Service as a Maven project.
+- Resolved by selecting **Add as Maven Project** from `pom.xml`.
+
+### Outcome
+
+Successfully implemented and verified Spring Cloud Config Server and Config Client integration in EventHub.
+
+---
+
+
+
 

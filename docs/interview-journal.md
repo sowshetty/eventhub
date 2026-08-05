@@ -105,3 +105,52 @@ It enables configuration, auto-configuration, and component scanning for a Sprin
 Because the Discovery Server hosts the service registry itself. It does not register with another Eureka server or fetch a registry from one.
 
 ---
+
+## Spring Cloud Config – Interview Notes
+
+### Q1. Why do we use Spring Cloud Config Server?
+
+**Answer:**
+
+Spring Cloud Config Server centralizes application configuration in a Git repository, allowing multiple microservices to share and manage configuration from a single location without rebuilding application code.
+
+---
+
+### Q2. What is the role of `spring.config.import`?
+
+**Answer:**
+
+`spring.config.import=configserver:http://localhost:8888` tells the application to fetch its configuration from the Config Server during startup before loading the application context.
+
+---
+
+### Q3. How does Config Server identify which configuration file to load?
+
+**Answer:**
+
+Config Server uses the value of `spring.application.name`. For example:
+
+```yaml
+spring:
+  application:
+    name: discovery-service
+```
+
+loads:
+
+```text
+discovery-service.yaml
+```
+
+from the configuration repository.
+
+---
+
+### Q4. Why is configuration stored outside the application?
+
+**Answer:**
+
+Externalized configuration allows centralized management, environment-specific settings, version control, and configuration changes without modifying application code.
+
+---
+
