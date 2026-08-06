@@ -154,3 +154,44 @@ Externalized configuration allows centralized management, environment-specific s
 
 ---
 
+## API Gateway – Interview Notes
+
+### Q1. Why do we use an API Gateway in Microservices?
+
+**Answer:**
+
+API Gateway acts as the single entry point for client requests. It routes requests to the appropriate microservices and provides centralized capabilities such as authentication, logging, rate limiting, and request routing.
+
+---
+
+### Q2. Why is API Gateway a Config Client?
+
+**Answer:**
+
+API Gateway loads its configuration from Spring Cloud Config Server using:
+
+```yaml
+spring:
+  config:
+    import: "configserver:http://localhost:8888"
+```
+
+This keeps configuration externalized and centrally managed.
+
+---
+
+### Q3. How does API Gateway register with Eureka?
+
+**Answer:**
+
+API Gateway uses the Spring Cloud Eureka Client dependency. During startup, it connects to Eureka Discovery Server using the configured `defaultZone` and registers itself so other services can discover it.
+
+---
+
+### Q4. Why did Spring Initializr generate `spring-cloud-starter-gateway-server-webmvc` instead of the older Gateway dependency?
+
+**Answer:**
+
+Spring Boot 4.x generates the Spring MVC variant of Spring Cloud Gateway. It is suitable for applications built using the traditional Spring MVC programming model and integrates well with Spring Data JPA and blocking database access.
+
+---

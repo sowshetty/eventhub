@@ -2943,6 +2943,75 @@ Successfully implemented and verified Spring Cloud Config Server and Config Clie
 
 ---
 
+## Sprint 3 – API Gateway & Service Registration
+
+### Date
+06-Aug-2026
+
+### Objective
+Implement Spring Cloud API Gateway and register it with Eureka Discovery Server.
+
+### What I Learned
+
+- Created the `api-gateway` microservice using Spring Initializr.
+- Used Spring Cloud Gateway (Spring MVC variant):
+  - `spring-cloud-starter-gateway-server-webmvc`
+- Configured API Gateway as a Config Client using:
+  ```yaml
+  spring:
+    config:
+      import: "configserver:http://localhost:8888"
+  ```
+- Created `api-gateway.yaml` in the `eventhub-config` repository.
+- Configured API Gateway to connect to Eureka Discovery Server.
+- Successfully registered API Gateway with Eureka.
+- Verified the service registration through the Eureka Dashboard.
+- Learned that Eureka registers services using the machine hostname by default.
+- Understood the purpose of `prefer-ip-address` and why it is useful in containerized environments.
+
+### Key Takeaways
+
+- API Gateway acts as the single entry point for all client requests.
+- API Gateway is both:
+  - Config Client
+  - Eureka Client
+- Centralized configuration allows Gateway configuration to be managed without modifying application code.
+- Infrastructure startup order:
+  1. Config Server
+  2. Discovery Server
+  3. API Gateway
+  4. Business Services
+
+### Challenges Faced
+
+- Initially forgot to start API Gateway before checking Eureka.
+- Verified that once the Gateway started, it registered successfully.
+
+### Outcome
+
+Successfully implemented Spring Cloud API Gateway and completed the core infrastructure foundation for EventHub.
+
+### Architecture After This Sprint
+
+```
+Client
+   │
+   ▼
+API Gateway
+   │
+   ▼
+Discovery Server
+   ▲
+   │
+Config Server
+   ▲
+   │
+eventhub-config
+```
+
+---
+
+
 
 
 
